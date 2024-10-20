@@ -1,0 +1,82 @@
+"""
+Basic Example of Method Overriding
+Define a Base Class: Create a base class with methods that you want to override.
+Create a Subclass: Define a subclass that inherits from the base class and overrides the methods.
+"""
+class Animal:
+    def speak(self):
+        return "Some sound"
+
+class Dog(Animal):
+    def speak(self):  # Overriding the speak method
+        return "Bark"
+
+class Cat(Animal):
+    def speak(self):  # Overriding the speak method
+        return "Meow"
+
+# Usage
+animals = [Dog(), Cat()]
+
+for animal in animals:
+    print(animal.speak())
+"""
+Output
+Copy code
+Bark
+Meow
+"""
+
+#Overriding All Methods in a Class
+#If you want to override all methods in a class, you can do it like this:
+class Base:
+    def method1(self):
+        return "Method 1 in Base"
+
+    def method2(self):
+        return "Method 2 in Base"
+
+    def method3(self):
+        return "Method 3 in Base"
+
+class Derived(Base):
+    def method1(self):
+        return "Method 1 in Derived"
+
+    def method2(self):
+        return "Method 2 in Derived"
+
+    def method3(self):
+        return "Method 3 in Derived"
+
+# Usage
+obj = Derived()
+print(obj.method1())  # Output: Method 1 in Derived
+print(obj.method2())  # Output: Method 2 in Derived
+print(obj.method3())  # Output: Method 3 in Derived
+#Notes on Overriding
+#Accessing the Base Method: If you want to call the base class method within the overridden method, you can use super():
+
+class Dog(Animal):
+    def speak(self):
+        return super().speak() + " and Bark"
+Multiple Inheritance: Be cautious with method resolution order (MRO) in multiple inheritance situations.
+
+#Dynamic Method Overriding
+#If you want to override methods dynamically (e.g., in a scenario where the methods are not known until runtime), you can use the setattr function:
+
+class Base:
+    def method(self):
+        return "Base method"
+
+def new_method(self):
+    return "Overridden method"
+
+# Create an instance of Base
+obj = Base()
+
+# Override the method dynamically
+setattr(obj, 'method', new_method.__get__(obj))
+
+# Usage
+print(obj.method())  # Output: Overridden method
