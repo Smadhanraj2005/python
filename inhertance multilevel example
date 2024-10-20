@@ -28,3 +28,9 @@ class Child(Parent):
 child = Child("madhan","madh","raj")
 
 child.display_info()
+"""
+OUTPUT
+grand parent Name: madhan
+parent Name: madh
+child Name: raj
+"""
